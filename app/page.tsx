@@ -9,22 +9,25 @@ const AirtimeForm = () => {
   const [network, setNetwork] = useState('');
   const [amount, setAmount] = useState('');
 
-  const mutation = useMutation(async () => {
-    const res = await fetch('https://iabconcept.com/api/airtimeapi', {
-      method: 'POST',
-      headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${process.env.AIRTIME_API_KEY}`,
-            },
-      body: JSON.stringify({ phoneNumber, network, amount }),
-    });
-    if (!res.ok) {
-      const errorData = await res.json();
-      throw new Error(errorData.error || 'Something went wrong');
-    }
-    return res.json();
+  const mutation = useMutation({
+    mutationFn: async () => {
+      const res = await fetch('/api/airtime', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'api-key': `Bearer ${process.env.AIRTIME_API_KEY}`,
+          'secret-key': `Bearer ${process.env.AIRTIME_SECRET_KEY}`,
+        },
+        body: JSON.stringify({ phoneNumber, network, amount }),
+      });
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(errorData.error || 'Something went wrong');
+      }
+      return res.json();
+    },
   });
-
+ 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     // Simple client-side validation.
