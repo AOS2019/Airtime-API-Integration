@@ -88,10 +88,10 @@ const AirtimeForm = () => {
         </div>
         <button
           type="submit"
-          disabled={mutation.isLoading}
+          // disabled={mutation.isLoading}
           className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
         >
-          {mutation.isLoading ? 'Processing...' : 'Purchase Airtime'}
+          {/* {mutation.isLoading ? 'Processing...' : 'Purchase Airtime'} */}
         </button>
       </form>
       {mutation.isSuccess && (
