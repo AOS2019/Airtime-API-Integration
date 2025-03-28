@@ -36,7 +36,8 @@ export async function POST(request: NextRequest) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${process.env.AIRTIME_API_KEY}`,
+        'api-key': `Bearer ${process.env.AIRTIME_API_KEY}`,
+        'secret-key': `Bearer ${process.env.AIRTIME_SECRET_KEY}`,
       },
       body: JSON.stringify({
         phone: phoneNumber,
