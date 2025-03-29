@@ -16,9 +16,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html
-    lang="en"
-    suppressHydrationWarning={true}
-    {...(isMounted ? { 'data-qb-installed': 'true' } : {})}
+      lang="en"
+      suppressHydrationWarning
+      {...(isMounted ? { 'data-qb-installed': 'true' } : {})}
     >
       <body>
         <QueryClientProvider client={queryClient}>
